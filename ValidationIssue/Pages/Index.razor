@@ -1,0 +1,25 @@
+﻿@page "/"
+
+    <EditForm Model="@project" OnValidSubmit="@SubmitForm">
+        <DataAnnotationsValidator />
+
+        <div>
+            <MatTextField Label="Project Name" @bind-Value="project.Name"></MatTextField>
+        </div>
+        <div>
+            <MatDatePicker Label="Requested Date" @bind-Value="project.RequestedByDate"></MatDatePicker>
+            <ValidationMessage For="@(() => project.RequestedByDate)" />
+        </div>
+        <div>
+            <MatButton Raised="true" Type="submit" Name="btnSubmit">Submit</MatButton>
+        </div>
+    </EditForm>
+
+@code {
+    Project project = new Project();
+
+    private async Task SubmitForm()
+    {
+        Console.WriteLine("Got here");
+    }
+}
